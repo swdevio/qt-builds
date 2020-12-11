@@ -69,7 +69,6 @@ function Build-QtModule([string] $PrefixDir, [string] $DepsPrefixDir, [string] $
                 '-qt-libjpeg'
                 '-qt-harfbuzz'
                 '-no-freetype'
-                # '-no-feature-sql'
                 '-nomake'; 'examples'
                 '-nomake'; 'tests'
                 '-I'; (Join-Path $DepsPrefixDir include)
@@ -163,23 +162,3 @@ function Build-QtModule([string] $PrefixDir, [string] $DepsPrefixDir, [string] $
 
     Copy-Item $StagedPrefixDir (Split-Path $PrefixDir -Parent) -Recurse -Force
 }
-
-#    Invoke-ToolchainEnvCommand $env:MAKE install
-#
-#    Remove-JunkFiles $PrefixDir $JunkFiles
-#
-#    if ($ModuleCallback) {
-#        if ($ModuleName -eq 'qtbase') {
-#            # Stage will include all qtbase (built first) dependencies as well
-#            $StagedPrefixDir = $PrefixDir
-#        } else {
-#            $StageDir = Join-Path $SourceDir .stage
-#            Invoke-ToolchainEnvCommand $env:MAKE install "INSTALL_ROOT=$(Split-Path $StageDir -NoQualifier)"
-#            $StagedPrefixDir = Join-Path $StageDir (Split-Path $PrefixDir -NoQualifier)
-#        }
-#
-#        Invoke-Command -ScriptBlock $ModuleCallback -ArgumentList @(
-#            $ModuleName
-#            $StagedPrefixDir
-#        )
-#    }
