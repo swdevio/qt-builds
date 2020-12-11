@@ -5,6 +5,7 @@ This repository contains scripts one could use to build their own binaries, and 
 Only Windows builds (x86 and x64, release and debug, shared) are currently supported with no immediate plans for other platforms and build types on my side, but PRs are surely welcome.
 
 Provided Qt modules (subject to their presence in a particular Qt version):
+* qt5compat
 * qtactiveqt
 * qtbase (sql plugins: odbc, sqlite)
 * qtcharts
